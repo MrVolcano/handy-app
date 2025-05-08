@@ -1,23 +1,8 @@
-import {
-  View,
-  TextInput,
-  Text,
-  TouchableOpacity,
-  Image,
-  Alert,
-  Linking,
-  StyleSheet,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from "react-native";
-import Checkbox from "expo-checkbox";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { useContext } from "react";
-import { UserContext } from "./UserContext";
-import axios from "axios";
+import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
+import { Linking } from "react-native";
 import { registerUser } from "../utils/api";
 export default function SignUp() {
   const navigation = useNavigation();
@@ -177,7 +162,7 @@ export default function SignUp() {
 
             <View style={styles.readOnlyInput}>
               <Text style={styles.readOnlyText}>
-                {userData.city || userData.county || "*** City ***"}
+                {userData.region || "*** City ***"}
               </Text>
             </View>
 
@@ -231,100 +216,3 @@ export default function SignUp() {
     </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    padding: 20,
-    backgroundColor: "#f0f0f0",
-  },
-  logo: {
-    width: 150,
-    height: 150,
-    marginBottom: 10,
-    resizeMode: "contain",
-    alignSelf: "center",
-  },
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 6,
-    backgroundColor: "#fff",
-    padding: 12,
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  bioInput: {
-    height: 100,
-  },
-  cameraRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-  },
-  postcodeRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-    gap: 10,
-  },
-  greenButton: {
-    backgroundColor: "#4CAF50",
-    borderRadius: 6,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    marginRight: 10,
-  },
-  orangeButton: {
-    backgroundColor: "#FF7A00",
-    borderRadius: 6,
-    paddingVertical: 24,
-    marginTop: 30,
-    width: "100%",
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  postcodeInput: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 6,
-    backgroundColor: "#fff",
-    padding: 12,
-    fontSize: 16,
-  },
-  lookupButton: {
-    backgroundColor: "#4CAF50",
-    borderRadius: 6,
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    marginRight: 10,
-  },
-  readOnlyInput: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 6,
-    backgroundColor: "#eaeaea",
-    padding: 12,
-    marginBottom: 10,
-  },
-  readOnlyText: {
-    fontSize: 16,
-    color: "#555",
-  },
-  checkboxRow: {
-    flexDirection: "row",
-    padding: 5,
-  },
-  checkboxLabel: {
-    marginLeft: 10,
-  },
-});
