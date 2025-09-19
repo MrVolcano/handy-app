@@ -10,13 +10,8 @@ export const UserProvider = ({ children }) => {
     email: "",
     password: "",
     postcode: "",
-<<<<<<< HEAD
-    address: "",
-    region: "",
-=======
     county: "",
     city: "",
->>>>>>> upstream/main
     long: "",
     lat: "",
     bio: "",
